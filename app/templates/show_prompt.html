@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Edit Questions{% endblock %}
+{% block header %}Edit Questions{% endblock %}
+{% block content %}
+    {% include '_pagination.html' %} 
+    <form action="{{ url_for('main.show_prompt', page=page, sort_by=sort_by, order=order) }}" method="POST" class="mt-3">
+        <table class="table-auto w-full">
+            <thead>
+                <tr>
+                    <th class="text-4xl px-4 py-2">Question</th>
+                    <th class="text-4xl px-4 py-2">Answer</th>
+                    <th class="text-4xl px-4 py-2">
+                        <a href="{{ url_for('main.show_prompt', page=page, sort_by='type', order='asc' if order=='desc' or order=='' else 'desc') }}">Type</a>
+                    </th>
+                    <th class="text-4xl px-4 py-2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for question in questions %}
+                <tr>
+                    <td class="px-4 py-2 w-1/6">
+                        <textarea name="question_{{ question.id }}" class="w-full p-2 border bg-gray-800 text-gray-100" rows="3">{{ question.question }}</textarea>
+                    </td>
+                    <td class="px-4 py-2">
+                        <textarea name="answer_{{ question.id }}" class="w-full p-2 border bg-gray-800 text-gray-100" rows="3">{{ question.answer }}</textarea>
+                    </td>
+                    <td class="px-4 py-2 w-48">
+                        <input type="text" name="type_{{ question.id }}" value="{{ question.type }}" class="w-full p-2 border bg-gray-800 text-gray-100">
+                    </td>
+                    <td class="px-4 py-2 text-center w-1/12">
+                        <button type="submit" name="update" value="{{ question.id }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Update</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="mt-4 text-center">
+            <button type="submit" name="update_all" value="true" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Update All</button>
+        </div>
+    </form>
+    {% include '_pagination.html' %} 
+{% endblock %}

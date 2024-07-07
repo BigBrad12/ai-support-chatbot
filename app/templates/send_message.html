@@ -1,0 +1,18 @@
+{% extends "base.html" %} 
+{% block title %}Send Message{% endblock %}
+{% block header %}Send Message{% endblock %}
+{% block content %}
+    <form action="/send_message" method="POST" class="mt-3">
+        <div class="form-group">
+            <label for="message" class="block text-sm font-medium text-gray-100">Message</label>
+            <input type="text" id="message" name="message" class="mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md text-gray-100 focus:outline-none focus:border-blue-500" required>
+        </div>
+        <button type="submit" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Send</button>
+    </form>
+    {% if response %}
+    <h2 class="mt-5 text-xl font-semibold">Response:</h2>
+    <div class="bg-gray-800 p-4 rounded-md">
+        <p class="whitespace-pre-wrap">{{ response }}</p>
+    </div>
+    {% endif %}
+{% endblock %}

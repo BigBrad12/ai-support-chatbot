@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Test Message</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-black text-gray-100 min-h-screen">
+    <div class="container mx-auto p-4">
+        <div class="text-center mt-10">
+            <h1 class="text-4xl font-bold text-gray-100">Input Test Message</h1>
+            <div class="mt-8 space-y-4">
+                <a href="/" class="inline-block bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">
+                    Home
+                </a>
+                <a href="/prompt" class="inline-block bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">
+                    Edit Questions
+                </a>
+                <a href="/send_message" class="inline-block bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded">
+                    Send Message
+                </a>
+            </div>
+        </div>
+        <form action="/test_webhook" method="POST" class="mt-10">
+            <div class="mb-4">
+                <label for="conversation_id" class="block text-sm font-medium text-gray-100">Conversation ID</label>
+                <input type="text" id="conversation_id" name="conversation_id" class="mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md text-gray-100 focus:outline-none focus:border-blue-500" required>
+            </div>
+            <div class="mb-4">
+                <label for="role" class="block text-sm font-medium text-gray-100">Role</label>
+                <input type="text" id="role" name="role" class="mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md text-gray-100 focus:outline-none focus:border-blue-500" required>
+            </div>
+            <div class="mb-4">
+                <label for="content" class="block text-sm font-medium text-gray-100">Message Content</label>
+                <textarea id="content" name="content" class="mt-1 block w-full p-2 bg-gray-800 border border-gray-700 rounded-md text-gray-100 focus:outline-none focus:border-blue-500" rows="4" required></textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
